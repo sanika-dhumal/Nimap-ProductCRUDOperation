@@ -1,7 +1,6 @@
 const productModel = require('../models/productModel');
 const categoryModel = require('../models/categoryModel');
 
-// View all products
 exports.viewProducts = (req, res) => {
     productModel.getAllProducts()
         .then(products => {
@@ -10,7 +9,6 @@ exports.viewProducts = (req, res) => {
         .catch(err => res.send("Error loading products"));
 };
 
-// Show add form
 exports.showAddForm = (req, res) => {
     categoryModel.getAllCategories()
         .then(categories => {
@@ -18,7 +16,6 @@ exports.showAddForm = (req, res) => {
         });
 };
 
-// Add new product
 exports.addProduct = (req, res) => {
     const { product_name, categoryId } = req.body;
     productModel.createProduct(product_name, categoryId)
@@ -26,7 +23,6 @@ exports.addProduct = (req, res) => {
         .catch(err => res.send("Error adding product"));
 };
 
-// Show edit form
 exports.showEditForm = (req, res) => {
     const pid = req.params.id;
     Promise.all([
@@ -39,7 +35,6 @@ exports.showEditForm = (req, res) => {
     .catch(err => res.send("Error loading form"));
 };
 
-// Update product
 exports.updateProduct = (req, res) => {
     const { pid, product_name, categoryId } = req.body;
     productModel.updateProduct(pid, product_name, categoryId)
@@ -47,7 +42,6 @@ exports.updateProduct = (req, res) => {
         .catch(err => res.send("Error updating product"));
 };
 
-// Delete product
 exports.deleteProduct = (req, res) => {
     const pid = req.params.id;
     productModel.deleteProduct(pid)

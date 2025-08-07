@@ -1,11 +1,9 @@
 const categoryModel = require('../models/categoryModel');
 
-// Home Page
 exports.homePage = (req, res) => {
     res.render('home');
 };
 
-// View Categories Page
 exports.viewCategories = (req, res) => {
     categoryModel.getAllCategories()
         .then(data => {
@@ -17,7 +15,6 @@ exports.viewCategories = (req, res) => {
         });
 };
 
-// Add Category Logic
 exports.addCategory = (req, res) => {
     const { categoryName } = req.body;
     categoryModel.createCategory(categoryName)
@@ -28,7 +25,6 @@ exports.addCategory = (req, res) => {
         });
 };
 
-// Edit Category Page
 exports.editCategory = (req, res) => {
     const id = req.params.id;
     categoryModel.getCategoryById(id)
@@ -41,7 +37,6 @@ exports.editCategory = (req, res) => {
         });
 };
 
-// Update Category
 exports.updateCategory = (req, res) => {
     const id = req.params.id;
     const { categoryName } = req.body;
@@ -53,7 +48,6 @@ exports.updateCategory = (req, res) => {
         });
 };
 
-// Delete Category
 exports.deleteCategory = (req, res) => {
     const id = req.params.id;
     categoryModel.deleteCategory(id)

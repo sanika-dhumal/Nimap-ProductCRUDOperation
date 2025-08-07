@@ -10,7 +10,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, "views"));
 
 
-app.use("/",productRoutes); // Below categoryRoutes
+app.use("/",productRoutes); 
 app.use("/",categoryRoutes);
 
 
